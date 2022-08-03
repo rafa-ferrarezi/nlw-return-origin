@@ -512,6 +512,6 @@ footer .social-links {
   }
 
   nav#navigation.scroll .menu a.button {
-    border-color: white;
+    border-color: white; 
     color: white;
 }
