@@ -18,7 +18,6 @@
   --bg-light: hsla(180, 14%, 97%);
 
   --nav-height: 7.2rem;
-
   font-size: 62.5%; /* 1rem = 10px */
 }
 html {
@@ -138,7 +137,7 @@ button.open-menu path[stroke*='#00856F'],
   stroke: var(--primary-color);
 }
 #navigation.scroll .logo path,
-.menu-expanded .logo path {
+body.menu-expanded #navigation .logo path {
   fill: white;
 }
 #navigation.scroll button.open-menu path[stroke*='#00856F'] {
@@ -447,7 +446,7 @@ footer .social-links {
 
 /*========= RESPONSIVO ==========*/
 
-@media (min-width: 102.4rem) {
+@media (min-width: 100rem) {
   /*========= GERAL ==========*/
   .wrapper {
     width: min(112rem, 100%);
@@ -456,6 +455,9 @@ footer .social-links {
   /*========= NAVEGATION ==========*/
 
   /*========= RESET ==========*/
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
+  }
   nav#navigation .wrapper * {
     margin: 0;
     padding: 0;
@@ -512,6 +514,24 @@ footer .social-links {
   }
 
   nav#navigation.scroll .menu a.button {
-    border-color: white; 
+    border-color: white;
     color: white;
+  }
+
+  nav#navigation .menu li a:hover {
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  nav#navigation .menu li a::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+
+    display: block;
+  }
+  nav#navigation.scroll .menu li a::after {
+    background-color: white;
+  }
 }
