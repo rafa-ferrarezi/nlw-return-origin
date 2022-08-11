@@ -6,6 +6,54 @@ onScroll()
 function onScroll() {
   showNavOnScroll()
   showBackToTopButtonOnScroll()
+
+  activateMenuAtCurrentSection(home)
+  activateMenuAtCurrentSection(services)
+  activateMenuAtCurrentSection(about)
+  activateMenuAtCurrentSection(contact)
+}
+
+function activateMenuAtCurrentSection(section) {
+  const targetLine = scrollY + innerHeight / 2
+
+  // verificar se a secao passou da linha
+  // quais dados vou precisar?
+
+  // o top da secao
+  const sectionTop = section.offsetTop
+
+  // a altura da secao
+  const sectionHeight = section.offsetHeight
+
+  // o topo da secao chegou ou ultrapasso a linha alvo
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
+
+  // informacoes dos dados e da logica
+  //console.log('O topo da secao chegou ou passou da linha?', sectionTopReachOrPassedTargetLine)
+
+  // verificar se a secao passou da linha
+  // quais dados vou precisar?
+
+  // a secao termina onde?
+  const sectionEndAt = sectionTop + sectionHeight
+
+  // o final da secao passou da linha alvo
+  const sectionEndPassedTargetLine = sectionEndAt <= targetLine
+
+  //console.log('O fundo da secao passou da linha?',sectionEndPassedTargetLine)
+
+  // limites da secao
+  const sectionBoundaries =
+    sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine
+
+  const sectionId = section.getAttribute('id')
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
+
+  menuElement.classList.remove('active')
+  if (sectionBoundaries) {
+    //console.log('estou na secao HOME')
+    menuElement.classList.add('active')
+  }
 }
 
 function showNavOnScroll() {
